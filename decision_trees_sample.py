@@ -1,7 +1,6 @@
 #!/usr/bin/python
 #encoding=utf8
-import pickle
-import os
+
 import config
 from mlscikit.tree.tree import DecisionTreeClassifier
 
@@ -53,6 +52,7 @@ clf = DecisionTreeClassifier()
 #     pickle.dump(clf.n_features, feature_f)
 #     feature_f.close()
 
+clf.fit(train_data_features, train_data_target)
 test_data_prediction = clf.predict(test_data_features)
 
 correct_count = 0

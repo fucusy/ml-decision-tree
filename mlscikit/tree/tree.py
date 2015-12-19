@@ -2,7 +2,6 @@ __author__ = 'fucus'
 
 
 from ..helper.calculate import cal_gini_index, max_in_dic, get_label_statistics
-import pickle
 
 class Node:
     """node in tree
