@@ -2,7 +2,6 @@
 #encoding=utf8
 import pickle
 import os
-
 import config
 from mlscikit.tree.tree import DecisionTreeClassifier
 
@@ -30,28 +29,29 @@ for line in open(test_file_path, 'r'):
     test_data_target.append(split_line[0])
 
 clf = DecisionTreeClassifier()
-pickle_path = 'tree_store.pickle'
-feature_count_path = 'feature_count.pickle'
-force_fit = False
 
-if os.path.exists(pickle_path) and not force_fit:
-    f = open(pickle_path, 'r')
-    clf.tree = pickle.load(f)
-    f.close()
 
-    feature_f = open(feature_count_path, 'r')
-    clf.n_features = pickle.load(feature_f)
-    feature_f.close()
-
-else:
-    clf.fit(train_data_features, train_data_target)
-    f = open(pickle_path, 'w')
-    pickle.dump(clf.tree, f)
-    f.close()
-
-    feature_f = open(feature_count_path, 'w')
-    pickle.dump(clf.n_features, feature_f)
-    feature_f.close()
+# pickle_path = 'tree_store.pickle'
+# feature_count_path = 'feature_count.pickle'
+# force_fit = False
+#
+# if os.path.exists(pickle_path) and not force_fit:
+#     f = open(pickle_path, 'r')
+#     clf.tree = pickle.load(f)
+#     f.close()
+#     feature_f = open(feature_count_path, 'r')
+#     clf.n_features = pickle.load(feature_f)
+#     feature_f.close()
+#
+# else:
+#     clf.fit(train_data_features, train_data_target)
+#     f = open(pickle_path, 'w')
+#     pickle.dump(clf.tree, f)
+#     f.close()
+#
+#     feature_f = open(feature_count_path, 'w')
+#     pickle.dump(clf.n_features, feature_f)
+#     feature_f.close()
 
 test_data_prediction = clf.predict(test_data_features)
 

@@ -1,2 +1,8 @@
-# ignore Pycharm IDE auto-generated files
+# Pycharm IDE auto-generated files
 .idea
+
+# compiled python script
+*.pyc
+
+# system auto-generated file
+data/.DS_Store
