@@ -66,15 +66,46 @@ def cal_gini_index(label_statistics_list):
     >>> cal_gini_index([2])
     0.0
     >>> cal_gini_index([])
-    1.0
+    0
     """
     count_sum = 0
     for count in label_statistics_list:
         count_sum += count
+    if count_sum == 0:
+        return 0
     gini_index = 1.0
     for count in label_statistics_list:
         gini_index -= (count * 1.0 / count_sum) * (count * 1.0 / count_sum)
     return gini_index
+
+def get_variance(target_value_statistics_list):
+    """
+
+    :param target_value_statistics_list: a list of number
+    :return: variance
+
+    Example:
+
+    >>> get_variance([1, 1])
+    0.0
+    >>> get_variance([])
+    0.0
+    >>> get_variance([1,2])
+    0.5
+    """
+
+    count = len(target_value_statistics_list)
+    if count == 0:
+        return 0.0
+    average = 0
+    for val in target_value_statistics_list:
+        average += val * 1.0 / count
+
+    s_diff = 0
+    for val in target_value_statistics_list:
+        s_diff += (val - average) ** 2
+
+    return s_diff
 
 
 if __name__ == '__main__':
