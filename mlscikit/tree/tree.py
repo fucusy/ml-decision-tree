@@ -4,6 +4,9 @@ __author__ = 'fucus'
 from ..helper.calculate import cal_gini_index, max_in_dic, get_label_statistics, get_variance
 import logging
 
+
+
+
 class Node:
     """node in tree
 
@@ -177,10 +180,13 @@ class DepthFirstTreeBuilder:
                 Y_best_right = param_Y_split_right
 
 
-        print "best_feature: %s" % best_feature
-        print "param: %s" % best_param
-        print "gini index %f" % min_error_val
-
+        logging.info('---------------')
+        logging.info("best_feature: %s" % best_feature)
+        logging.info("param: %s" % best_param)
+        if is_classification:
+            logging.info("gini index: %f" % min_error_val)
+        else:
+            logging.info("variance: %f" % min_error_val)
         # left_statistics = get_label_statistics(Y_best_left)
         # right_statistics = get_label_statistics(Y_best_right)
 

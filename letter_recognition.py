@@ -2,8 +2,12 @@
 #encoding=utf8
 
 import config
+import logging
 from mlscikit.tree.tree import DecisionTreeClassifier
 
+FORMAT = '%(asctime)-12s[%(levelname)s] %(message)s'
+logging.basicConfig(level=logging.INFO, format=FORMAT, datefmt='%Y-%m-%d %H:%M:%S')
+logging.info('start program-----------------')
 train_file_path = config.train_data_path
 test_file_path = config.test_data_path
 train_data_features = []
@@ -61,3 +65,4 @@ for i in range(all_count):
     if test_data_prediction[i] == test_data_target[i]:
         correct_count += 1
 print "precision %d / %d = %f" % (correct_count, all_count, 1.0 * correct_count / all_count)
+logging.info('end program-----------------')

@@ -5,8 +5,10 @@ import config
 import logging
 from mlscikit.tree.tree import DecisionTreeClassifier
 
-logging.basicConfig(level=logging.INFO)
 
+FORMAT = '%(asctime)-12s[%(levelname)s] %(message)s'
+logging.basicConfig(level=logging.INFO, format=FORMAT, datefmt='%Y-%m-%d %H:%M:%S')
+logging.info('start program---------------------')
 
 train_file_path = config.abalone_predict_train_data_path
 test_file_path = config.abalone_predict_test_data_path
@@ -80,3 +82,5 @@ for i in range(all_count):
     variance += abs(test_data_prediction[i] - test_data_target[i])
 
 print "variance %d / %d = %f" % (variance, all_count, 1.0 * variance / all_count)
+
+logging.info('end program---------------------')
