@@ -75,13 +75,47 @@ get insight about CART decision tree from youtube video:
 about the source code
 -----
 
-### data
+### classification tree data
 
 the data from paper "Letter Recognition Using Holland-style Adaptive Classifiers".
 
 The objective is to identify each of a large number of black-and-white rectangular pixel displays as one of the 26 capital letters in the English alphabet. The character images were based on 20 different fonts and each letter within these 20 fonts was randomly distorted to produce a file of 20,000 unique stimuli. Each stimulus was converted into 16 primitive numerical attributes (statistical moments and edge counts) which were then scaled to fit into a range of integer values from 0 through 15. We typically train on the first 16000 items and then use the resulting model to predict the letter category for the remaining 4000.
 
 you can know more detail and download data from [uci machine learning repository](https://archive.ics.uci.edu/ml/datasets/Letter+Recognition)
+
+
+### regression tree data
+
+the data from paper Sam Waugh (1995) "Extending and benchmarking Cascade-Correlation".
+
+the main idea of this paper is to predict the age of abalone from physical measurements.
+
+the data attribution info:
+Attribute Information:
+ 
+The number of rings is the value to predict: either as a continuous value or as a classification problem. 
+
+  Name / Data Type / Measurement Unit / Description 
+
+ -----------------------------  
+
+Sex / nominal / -- / M, F, and I (infant) 
+
+ Length / continuous / mm / Longest shell measurement 
+
+ Diameter / continuous / mm / perpendicular to length  
+
+Height / continuous / mm / with meat in shell 
+
+ Whole weight / continuous / grams / whole abalone 
+
+ Shucked weight / continuous / grams / weight of meat  
+
+Viscera weight / continuous / grams / gut weight (after bleeding)  
+
+Shell weight / continuous / grams / after being dried  
+
+Rings / integer / -- / +1.5 gives the age in years 
 
 ### algorithm
 
@@ -98,31 +132,67 @@ how to run test code
 1. windows or *nix system, tested on *nix system   
 1. python version 2.7 or higher, tested at 2.7
 
-`python decision_trees_sample.py`
+### run classification tree test
 
-
-
-
-### result
+`python letter_recognition.py`
 
 during the program, it takes 16000 instance as training data, it will 
 output gini index value of each tree node during training time.
 after training, it will output the prediction precision of 4000 instance 
-of test data.
+of test data. and the prediction precision is 86.95%.
 
-the program will consume your almost 1 minute time 
+the program will consume your almost 1 minute time. it cost 50 seconds on a macbook pro with cpu(2.2 GHz Intel Core i7) 
+and ssd.
 
 the result will look like this:
 
-    param: 2.000000
-    gini index 0.000000
-    best_feature: 5
-    param: 3.000000
-    gini index 0.178571
-    best_feature: 0
-    param: 8.000000
-    gini index 0.000000
-    best_feature: 0
-    param: 5.000000
-    gini index 0.000000
+    2016-01-01 09:08:54[INFO] param: 5.25
+    2016-01-01 09:08:54[INFO] gini index: 0.000000
+    2016-01-01 09:08:54[INFO] best_feature: 4
+    2016-01-01 09:08:54[INFO] param: 6.0
+    2016-01-01 09:08:54[INFO] gini index: 0.157350
+    2016-01-01 09:08:54[INFO] best_feature: 5
+    2016-01-01 09:08:54[INFO] param: 2.25
+    2016-01-01 09:08:54[INFO] gini index: 0.000000
+    2016-01-01 09:08:54[INFO] best_feature: 5
+    2016-01-01 09:08:54[INFO] param: 3.0
+    2016-01-01 09:08:54[INFO] gini index: 0.178571
+    2016-01-01 09:08:54[INFO] best_feature: 0
+    2016-01-01 09:08:54[INFO] param: 8.25
+    2016-01-01 09:08:54[INFO] gini index: 0.000000
+    2016-01-01 09:08:54[INFO] best_feature: 0
+    2016-01-01 09:08:54[INFO] param: 5.25
+    2016-01-01 09:08:54[INFO] gini index: 0.000000
     precision 3478 / 4000 = 0.869500
+
+
+
+### run regression tree test
+
+`python abalone_predict.py`
+
+during the program, it takes 3341 instance as training data, it will 
+output variance value of each tree node during training time.
+after training, it will output the prediction variance of 836 instance 
+of test data. and the average prediction deviation is 1.803. it means 
+the average diff between prediction age of abalone and actual age is 1.803 
+
+the program will consume your less than 1 minute time, it cost 7 seconds on a macbook pro with cpu(2.2 GHz Intel Core i7) 
+and ssd.
+
+the result will look like this:
+    
+    2016-01-01 09:09:17[INFO] variance: 0.000000
+    2016-01-01 09:09:17[INFO] ---------------
+    2016-01-01 09:09:17[INFO] best_feature: 2
+    2016-01-01 09:09:17[INFO] param: 0.62025
+    2016-01-01 09:09:17[INFO] variance: 0.400000
+    2016-01-01 09:09:17[INFO] ---------------
+    2016-01-01 09:09:17[INFO] best_feature: 0
+    2016-01-01 09:09:17[INFO] param: M
+    2016-01-01 09:09:17[INFO] variance: 0.000000
+    2016-01-01 09:09:17[INFO] ---------------
+    2016-01-01 09:09:17[INFO] best_feature: 2
+    2016-01-01 09:09:17[INFO] param: 0.5905
+    2016-01-01 09:09:17[INFO] variance: 0.000000
+    variance 1507 / 836 = 1.803002
