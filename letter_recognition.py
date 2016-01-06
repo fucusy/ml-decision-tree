@@ -3,8 +3,10 @@
 
 import config
 import logging
+import datetime
 from mlscikit.tree.tree import DecisionTreeClassifier
 
+start_time = datetime.datetime.now()
 FORMAT = '%(asctime)-12s[%(levelname)s] %(message)s'
 logging.basicConfig(level=logging.INFO, format=FORMAT, datefmt='%Y-%m-%d %H:%M:%S')
 logging.info('start program-----------------')
@@ -64,5 +66,7 @@ all_count = len(test_data_prediction)
 for i in range(all_count):
     if test_data_prediction[i] == test_data_target[i]:
         correct_count += 1
-print "precision %d / %d = %f" % (correct_count, all_count, 1.0 * correct_count / all_count)
+logging.info("precision %d / %d = %.2f%%" % (correct_count, all_count, 1.0 * correct_count / all_count * 100))
+end_time = datetime.datetime.now()
+logging.info('total running time: %.2f second' % (end_time - start_time).seconds)
 logging.info('end program-----------------')

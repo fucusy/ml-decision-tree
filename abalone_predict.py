@@ -3,9 +3,11 @@
 
 import config
 import logging
+import datetime
 from mlscikit.tree.tree import DecisionTreeClassifier
 
 
+start_time = datetime.datetime.now()
 FORMAT = '%(asctime)-12s[%(levelname)s] %(message)s'
 logging.basicConfig(level=logging.INFO, format=FORMAT, datefmt='%Y-%m-%d %H:%M:%S')
 logging.info('start program---------------------')
@@ -77,10 +79,30 @@ test_data_prediction = clf.predict(test_data_features)
 
 correct_count = 0
 variance = 0
+diff_1_correct_count = 0
+diff_2_correct_count = 0
+diff_3_correct_count = 0
 all_count = len(test_data_prediction)
+
+
 for i in range(all_count):
-    variance += abs(test_data_prediction[i] - test_data_target[i])
+    diff = abs(test_data_prediction[i] - test_data_target[i])
+    variance += diff
+    if diff <= 1:
+        diff_1_correct_count += 1
 
-print "variance %d / %d = %f" % (variance, all_count, 1.0 * variance / all_count)
+    if diff <= 2:
+        diff_2_correct_count += 1
 
+    if diff <= 3:
+        diff_3_correct_count += 1
+
+end_time = datetime.datetime.now()
+
+logging.info('average variance %d / %d = %f' % (variance, all_count, 1.0 * variance / all_count))
+logging.info('variance less or equal 1 precision: %.2f%%' % (diff_1_correct_count * 1.0 / all_count * 100))
+logging.info('variance less or equal 2 precision: %.2f%%' % (diff_2_correct_count * 1.0 / all_count * 100))
+logging.info('variance less or equal 3 precision: %.2f%%' % (diff_3_correct_count * 1.0 / all_count * 100))
+
+logging.info('total running time: %.2f second' % (end_time - start_time).seconds)
 logging.info('end program---------------------')
