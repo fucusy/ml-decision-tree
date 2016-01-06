@@ -146,24 +146,21 @@ and ssd.
 
 the result will look like this:
 
-    2016-01-01 09:08:54[INFO] param: 5.25
-    2016-01-01 09:08:54[INFO] gini index: 0.000000
-    2016-01-01 09:08:54[INFO] best_feature: 4
-    2016-01-01 09:08:54[INFO] param: 6.0
-    2016-01-01 09:08:54[INFO] gini index: 0.157350
-    2016-01-01 09:08:54[INFO] best_feature: 5
-    2016-01-01 09:08:54[INFO] param: 2.25
-    2016-01-01 09:08:54[INFO] gini index: 0.000000
-    2016-01-01 09:08:54[INFO] best_feature: 5
-    2016-01-01 09:08:54[INFO] param: 3.0
-    2016-01-01 09:08:54[INFO] gini index: 0.178571
-    2016-01-01 09:08:54[INFO] best_feature: 0
-    2016-01-01 09:08:54[INFO] param: 8.25
-    2016-01-01 09:08:54[INFO] gini index: 0.000000
-    2016-01-01 09:08:54[INFO] best_feature: 0
-    2016-01-01 09:08:54[INFO] param: 5.25
-    2016-01-01 09:08:54[INFO] gini index: 0.000000
-    precision 3478 / 4000 = 0.869500
+    2016-01-06 16:27:03[INFO] best_feature: 5
+    2016-01-06 16:27:03[INFO] param: 3.0
+    2016-01-06 16:27:03[INFO] gini index: 0.178571
+    2016-01-06 16:27:03[INFO] ---------------
+    2016-01-06 16:27:03[INFO] best_feature: 0
+    2016-01-06 16:27:03[INFO] param: 8.25
+    2016-01-06 16:27:03[INFO] gini index: 0.000000
+    2016-01-06 16:27:03[INFO] ---------------
+    2016-01-06 16:27:03[INFO] best_feature: 0
+    2016-01-06 16:27:03[INFO] param: 5.25
+    2016-01-06 16:27:03[INFO] gini index: 0.000000
+    2016-01-06 16:27:03[INFO] precision 3478 / 4000 = 86.95%
+    2016-01-06 16:27:03[INFO] total running time: 47.00 second
+    2016-01-06 16:27:03[INFO] end program-----------------
+
 
 
 
@@ -181,18 +178,14 @@ the program will consume your less than 1 minute time, it cost 7 seconds on a ma
 and ssd.
 
 the result will look like this:
-    
-    2016-01-01 09:09:17[INFO] variance: 0.000000
-    2016-01-01 09:09:17[INFO] ---------------
-    2016-01-01 09:09:17[INFO] best_feature: 2
-    2016-01-01 09:09:17[INFO] param: 0.62025
-    2016-01-01 09:09:17[INFO] variance: 0.400000
-    2016-01-01 09:09:17[INFO] ---------------
-    2016-01-01 09:09:17[INFO] best_feature: 0
-    2016-01-01 09:09:17[INFO] param: M
-    2016-01-01 09:09:17[INFO] variance: 0.000000
-    2016-01-01 09:09:17[INFO] ---------------
-    2016-01-01 09:09:17[INFO] best_feature: 2
-    2016-01-01 09:09:17[INFO] param: 0.5905
-    2016-01-01 09:09:17[INFO] variance: 0.000000
-    variance 1507 / 836 = 1.803002
+        
+    2016-01-06 16:19:13[INFO] best_feature: 2
+    2016-01-06 16:19:13[INFO] param: 0.5905
+    2016-01-06 16:19:13[INFO] variance: 0.000000
+    2016-01-06 16:19:13[INFO] average variance 1507 / 836 = 1.803002
+    2016-01-06 16:19:13[INFO] variance less or equal 1 precision: 51.44%
+    2016-01-06 16:19:13[INFO] variance less or equal 2 precision: 73.80%
+    2016-01-06 16:19:13[INFO] variance less or equal 3 precision: 84.93%
+    2016-01-06 16:19:13[INFO] total running time: 5.00 second
+    2016-01-06 16:19:13[INFO] end program---------------------
+
